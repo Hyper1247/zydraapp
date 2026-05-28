@@ -94,7 +94,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 12px;
         }
 
         .screen.active {
@@ -114,25 +114,25 @@
             -webkit-backdrop-filter: blur(40px);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 36px;
+            padding: 30px 24px;
             width: 100%;
-            max-width: 460px;
+            max-width: 420px;
             box-shadow: var(--shadow), 0 0 80px rgba(124,58,237,0.08);
         }
 
         .card-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .card-header .logo {
-            font-size: 42px;
-            margin-bottom: 12px;
+            font-size: 38px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .card-header h1 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             background: linear-gradient(135deg, var(--accent-light), var(--accent2-light));
             -webkit-background-clip: text;
@@ -149,12 +149,12 @@
 
         /* ============ FORM ELEMENTS ============ */
         .field {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .field label {
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -190,7 +190,7 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 13px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: var(--radius-sm);
             font-family: 'Inter', sans-serif;
@@ -238,9 +238,9 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin: 22px 0;
+            margin: 20px 0;
             color: var(--text-muted);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
         }
 
@@ -293,7 +293,7 @@
             align-self: flex-end;
             width: auto;
             min-width: 100px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         /* ============ CHAT SCREEN ============ */
@@ -313,36 +313,40 @@
         }
 
         .chat-header {
-            padding: 16px 24px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
             background: rgba(12,12,29,0.6);
         }
 
         .chat-header-info {
             flex: 1;
+            min-width: 0;
         }
 
         .chat-header-info h2 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .chat-header-info .sub {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-dim);
-            margin-top: 2px;
+            margin-top: 1px;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
+            gap: 4px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
         }
 
@@ -355,7 +359,7 @@
         .messages-area {
             flex: 1;
             overflow-y: auto;
-            padding: 20px 24px;
+            padding: 16px 14px;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -369,7 +373,7 @@
         .msg {
             display: flex;
             flex-direction: column;
-            max-width: 60%;
+            max-width: 78%;
             animation: msgIn 0.3s ease-out;
         }
 
@@ -401,10 +405,10 @@
         }
 
         .msg .bubble {
-            padding: 10px 16px;
+            padding: 10px 14px;
             border-radius: 16px;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 13.5px;
+            line-height: 1.45;
             word-break: break-word;
         }
 
@@ -424,7 +428,7 @@
         /* Attached image style */
         .bubble img.shared-img {
             max-width: 100%;
-            max-height: 250px;
+            max-height: 200px;
             border-radius: 8px;
             margin-top: 5px;
             display: block;
@@ -440,8 +444,8 @@
         }
 
         .bubble img.sticker-img {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             display: block;
             animation: pulse-sticker 2s infinite ease-in-out;
         }
@@ -462,16 +466,16 @@
         .file-attach {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: rgba(0,0,0,0.2);
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: 8px;
             margin-top: 5px;
             border: 1px solid var(--border-subtle);
         }
 
         .file-attach-icon {
-            font-size: 24px;
+            font-size: 20px;
         }
 
         .file-attach-info {
@@ -480,7 +484,7 @@
         }
 
         .file-attach-name {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
@@ -488,17 +492,17 @@
         }
 
         .file-attach-size {
-            font-size: 10px;
+            font-size: 9.5px;
             color: var(--text-dim);
-            margin-top: 2px;
+            margin-top: 1px;
         }
 
         .file-download-btn {
             background: var(--bg-hover);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 4px 10px;
-            font-size: 11px;
+            padding: 4px 8px;
+            font-size: 10.5px;
             border-radius: 6px;
             cursor: pointer;
             text-decoration: none;
@@ -515,27 +519,29 @@
         .audio-player-bubble {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: rgba(0,0,0,0.15);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 12px;
-            min-width: 210px;
+            min-width: 170px;
+            max-width: 240px;
             border: 1px solid var(--border-subtle);
         }
 
         .audio-player-btn {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             background: var(--accent);
             border: none;
             color: white;
-            font-size: 12px;
+            font-size: 11px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s;
+            flex-shrink: 0;
         }
 
         .audio-player-btn:hover {
@@ -550,6 +556,7 @@
             border-radius: 2px;
             position: relative;
             cursor: pointer;
+            min-width: 70px;
         }
 
         .audio-progress-fill {
@@ -563,13 +570,14 @@
         }
 
         .audio-duration {
-            font-size: 10px;
+            font-size: 9.5px;
             color: var(--text-dim);
             font-family: 'JetBrains Mono', monospace;
+            flex-shrink: 0;
         }
 
         .msg .time {
-            font-size: 10px;
+            font-size: 9.5px;
             color: var(--text-muted);
             margin-top: 3px;
             padding: 0 4px;
@@ -578,9 +586,9 @@
         .msg-system {
             align-self: center;
             text-align: center;
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-dim);
-            padding: 6px 16px;
+            padding: 6px 14px;
             background: rgba(124,58,237,0.08);
             border-radius: 20px;
             border: 1px solid var(--border);
@@ -588,12 +596,12 @@
 
         /* ============ CHAT INPUT & ATTACH PANEL ============ */
         .chat-input-area {
-            padding: 16px 24px;
+            padding: 10px 12px;
             border-top: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(12,12,29,0.6);
+            gap: 6px;
+            background: rgba(12,12,29,0.9);
             position: relative;
         }
 
@@ -605,7 +613,7 @@
             background: var(--bg-input);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
-            padding-right: 8px;
+            min-width: 0;
             transition: all 0.25s;
         }
 
@@ -619,9 +627,10 @@
             background: none;
             border: none;
             color: var(--text);
-            padding: 12px 14px;
-            font-size: 14px;
+            padding: 10px 12px;
+            font-size: 13.5px;
             outline: none;
+            min-width: 0;
         }
 
         .input-actions-btn {
@@ -630,13 +639,14 @@
             color: var(--text-dim);
             cursor: pointer;
             font-size: 18px;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 8px;
             transition: all 0.2s;
+            flex-shrink: 0;
         }
 
         .input-actions-btn:hover {
@@ -655,24 +665,26 @@
             to { transform: scale(1.1); background: rgba(239,68,68,0.25); }
         }
 
+        /* Send button circularized for mobile & elegant layout */
         .chat-input-area .send-btn {
-            padding: 12px 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--accent), #9333ea);
             color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
             transition: all 0.25s;
+            flex-shrink: 0;
+            font-size: 15px;
         }
 
         .chat-input-area .send-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px var(--accent-glow);
+            transform: scale(1.05);
+            box-shadow: 0 4px 14px var(--accent-glow);
         }
 
         /* Voice note recording overlay bar */
@@ -683,14 +695,9 @@
             display: none;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px;
+            padding: 0 14px;
             z-index: 5;
-            animation: slideUpOverlay 0.25s ease;
-        }
-
-        @keyframes slideUpOverlay {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
+            border-top: 1px solid var(--border-subtle);
         }
 
         .voice-record-overlay.active {
@@ -700,15 +707,15 @@
         .voice-record-timer {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 600;
         }
 
         .record-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--red);
             animation: blink-dot 0.8s infinite alternate;
@@ -721,13 +728,13 @@
 
         .voice-record-actions {
             display: flex;
-            gap: 12px;
+            gap: 8px;
         }
 
         .record-action-btn {
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-size: 13px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             border: none;
@@ -739,29 +746,20 @@
             color: var(--text-dim);
         }
 
-        .record-action-btn.cancel:hover {
-            background: var(--bg-hover);
-            color: var(--red);
-        }
-
         .record-action-btn.send {
             background: linear-gradient(135deg, var(--green), #059669);
             color: white;
-            box-shadow: 0 4px 12px rgba(16,185,129,0.2);
         }
 
-        .record-action-btn.send:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 16px rgba(16,185,129,0.3);
-        }
-
-        /* ============ PREMIUM DRAWER ============ */
+        /* ============ PREMIUM DRAWER (EMOJIS / STICKERS / GIFS) ============ */
         .media-drawer {
             position: absolute;
-            bottom: 80px;
-            left: 24px;
-            width: 360px;
-            height: 380px;
+            bottom: 60px;
+            left: 10px;
+            right: 10px;
+            width: calc(100% - 20px);
+            max-width: 350px;
+            height: 320px;
             background: rgba(18, 18, 42, 0.95);
             border: 1px solid var(--border);
             border-radius: var(--radius);
@@ -791,9 +789,9 @@
 
         .drawer-tab {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             text-align: center;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             color: var(--text-dim);
             cursor: pointer;
@@ -810,7 +808,7 @@
         .drawer-content {
             flex: 1;
             overflow-y: auto;
-            padding: 14px;
+            padding: 10px;
         }
 
         .drawer-content::-webkit-scrollbar { width: 4px; }
@@ -820,7 +818,7 @@
         .stickers-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 8px;
         }
 
         .sticker-item {
@@ -844,8 +842,8 @@
         /* GIF Search Layout */
         .gif-search-box {
             display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
+            gap: 6px;
+            margin-bottom: 10px;
         }
 
         .gif-search-box input {
@@ -853,9 +851,9 @@
             background: var(--bg-input);
             border: 1px solid var(--border-subtle);
             color: var(--text);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 12.5px;
             outline: none;
         }
 
@@ -867,9 +865,9 @@
             background: var(--accent);
             border: none;
             color: white;
-            padding: 0 14px;
+            padding: 0 10px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
             cursor: pointer;
         }
@@ -877,7 +875,7 @@
         .gifs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
+            gap: 6px;
         }
 
         .gif-item {
@@ -887,12 +885,11 @@
             transition: all 0.2s;
             position: relative;
             background: rgba(255,255,255,0.02);
-            height: 90px;
+            height: 80px;
         }
 
         .gif-item:hover {
             transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .gif-item img {
@@ -905,9 +902,9 @@
         /* Emojis Grid */
         .emojis-grid {
             display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 8px;
-            font-size: 22px;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            font-size: 20px;
         }
 
         .emoji-item {
@@ -926,14 +923,13 @@
 
         /* File Preview Area */
         .upload-preview-bar {
-            padding: 8px 24px;
+            padding: 8px 16px;
             background: rgba(124, 58, 237, 0.08);
             border-top: 1px solid var(--border);
             display: none;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            animation: slideUp 0.2s ease-out;
+            gap: 10px;
         }
 
         .upload-preview-bar.active {
@@ -943,15 +939,22 @@
         .preview-file-details {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 13px;
+            gap: 6px;
+            font-size: 12px;
+            min-width: 0;
+        }
+
+        .preview-file-details span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .preview-cancel-btn {
             background: none;
             border: none;
             color: var(--red);
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
             padding: 4px;
         }
@@ -962,9 +965,9 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(-100px);
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 12px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
             z-index: 100;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -988,25 +991,20 @@
         }
 
         /* Header action button icons */
-        .header-actions { display: flex; gap: 8px; }
+        .header-actions { display: flex; gap: 6px; }
         .icon-btn {
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--bg-input);
             border: 1px solid var(--border-subtle);
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             color: var(--text-dim);
             transition: all 0.2s;
-        }
-        .icon-btn:hover {
-            background: var(--bg-hover);
-            border-color: var(--accent);
-            color: var(--accent-light);
         }
 
         /* Image modal */
@@ -1018,21 +1016,14 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 10px;
             cursor: zoom-out;
         }
 
         .img-modal img {
             max-width: 100%;
-            max-height: 90vh;
+            max-height: 85vh;
             border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-
-        @media (max-width: 520px) {
-            .card { padding: 24px 20px; }
-            .msg { max-width: 85%; }
-            .media-drawer { width: 310px; left: 10px; right: 10px; }
         }
     </style>
 </head>
@@ -1066,9 +1057,9 @@
             </div>
 
             <div class="field">
-                <label>Encryption Password (Dost ko bhi yahi dena)</label>
+                <label>Encryption Password</label>
                 <input type="text" id="encPassword" placeholder="Shared secret password...">
-                <div style="font-size: 11px; color: var(--text-dim); margin-top: 5px;">⚠️ Is password ke bina messages decrypt nahi honge</div>
+                <div style="font-size: 10px; color: var(--text-dim); margin-top: 5px;">⚠️ Is password ke bina messages decrypt nahi honge</div>
             </div>
 
             <button class="btn btn-primary" onclick="createRoom()">
@@ -1082,7 +1073,7 @@
                     <label>Room Code</label>
                     <input type="text" id="roomCodeInput" placeholder="ABC123" maxlength="6" style="text-transform: uppercase; letter-spacing: 3px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center;">
                 </div>
-                <button class="btn btn-pink" onclick="joinRoom()" style="margin-bottom: 18px; min-width: 110px;">
+                <button class="btn btn-pink" onclick="joinRoom()" style="margin-bottom: 16px; min-width: 90px; padding: 12px 10px;">
                     🔗 Join
                 </button>
             </div>
@@ -1120,7 +1111,7 @@
             <div class="chat-header">
                 <div class="chat-header-info">
                     <h2 id="chatRoomTitle">Room: ------</h2>
-                    <div class="sub" id="chatSubtitle">🔒 AES-256 End-to-End Encrypted</div>
+                    <div class="sub" id="chatSubtitle">🔒 AES-256 Encrypted</div>
                 </div>
                 <div class="header-actions">
                     <div class="badge badge-green">Live</div>
@@ -1153,7 +1144,7 @@
                 <!-- GIFs tab -->
                 <div class="drawer-content" id="drawerTab-gifs" style="display:none;">
                     <div class="gif-search-box">
-                        <input type="text" id="gifSearchInput" placeholder="GIF search karein... (e.g. funny, sad, ok)" onkeydown="handleGifSearchKey(event)">
+                        <input type="text" id="gifSearchInput" placeholder="GIF search karein..." onkeydown="handleGifSearchKey(event)">
                         <button onclick="searchGifs()">🔍</button>
                     </div>
                     <div class="gifs-grid" id="gifsGrid"></div>
@@ -1164,8 +1155,8 @@
             <div class="upload-preview-bar" id="uploadPreviewBar">
                 <div class="preview-file-details">
                     <span id="previewFileIcon">📎</span>
-                    <span id="previewFileName">filename.ext</span>
-                    <span id="previewFileSize" style="color:var(--text-dim); font-size:11px;">(0 KB)</span>
+                    <span id="previewFileName" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis;">filename.ext</span>
+                    <span id="previewFileSize" style="color:var(--text-dim); font-size:10px;">(0 KB)</span>
                 </div>
                 <button class="preview-cancel-btn" onclick="clearSelectedFile()">✕</button>
             </div>
@@ -1186,18 +1177,17 @@
                     </div>
                     <div class="voice-record-actions">
                         <button class="record-action-btn cancel" onclick="cancelAudioRecording()">✕ Cancel</button>
-                        <button class="record-action-btn send" onclick="stopAndSendAudioRecording()">📤 Send Voice Note</button>
+                        <button class="record-action-btn send" onclick="stopAndSendAudioRecording()">📤 Send</button>
                     </div>
                 </div>
 
                 <div class="input-wrapper">
-                    <input type="text" id="msgInput" placeholder="Message likho..." onkeydown="handleChatKey(event)" autocomplete="off">
+                    <input type="text" id="msgInput" placeholder="Message..." onkeydown="handleChatKey(event)" oninput="handleInputText()" autocomplete="off">
                 </div>
 
-                <button class="input-actions-btn" id="recordAudioBtn" onclick="toggleAudioRecording()" title="Record Audio (Click to toggle)">🎙️</button>
-                <button class="send-btn" onclick="sendMessage()">
-                    Send 📤
-                </button>
+                <!-- Microphone & Send buttons switch dynamically -->
+                <button class="input-actions-btn" id="recordAudioBtn" onclick="toggleAudioRecording()" title="Record Audio">🎙️</button>
+                <button class="send-btn" id="sendTextBtn" onclick="sendMessage()" style="display: none;" title="Send Message">📤</button>
             </div>
         </div>
     </div>
@@ -1415,6 +1405,21 @@
             });
         }
 
+        // Switch between microphone and send icon depending on input text length
+        function handleInputText() {
+            const text = document.getElementById('msgInput').value.trim();
+            const recordBtn = document.getElementById('recordAudioBtn');
+            const sendBtn = document.getElementById('sendTextBtn');
+
+            if (text.length > 0 || selectedFile) {
+                recordBtn.style.display = 'none';
+                sendBtn.style.display = 'flex';
+            } else {
+                recordBtn.style.display = 'flex';
+                sendBtn.style.display = 'none';
+            }
+        }
+
         function sendMessage() {
             if (selectedFile) {
                 uploadSelectedFile();
@@ -1434,6 +1439,7 @@
             });
 
             input.value = '';
+            handleInputText(); // Reset buttons display
             input.focus();
             closeMediaDrawer();
         }
@@ -1471,14 +1477,15 @@
             document.getElementById('previewFileIcon').textContent = getFileEmoji(file.name);
             document.getElementById('uploadPreviewBar').classList.add('active');
             
-            document.getElementById('msgInput').placeholder = "Send dabayein file bhejne ke liye...";
+            // Auto trigger send button view
+            handleInputText();
         }
 
         function clearSelectedFile() {
             selectedFile = null;
             document.getElementById('fileAttachInput').value = '';
             document.getElementById('uploadPreviewBar').classList.remove('active');
-            document.getElementById('msgInput').placeholder = "Message likho...";
+            handleInputText();
         }
 
         function getFileEmoji(filename) {
@@ -1533,7 +1540,7 @@
 
         function startAudioRecording() {
             if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                showToast('❌ Microphone access aapke browser mein unsupported hai.', 'error');
+                showToast('❌ Mic access is browser me supported nahi hai.', 'error');
                 return;
             }
 
@@ -1547,14 +1554,12 @@
                     };
 
                     mediaRecorder.onstop = () => {
-                        // Clean up mic stream tracks
                         stream.getTracks().forEach(track => track.stop());
                     };
 
                     mediaRecorder.start();
                     isRecording = true;
                     
-                    // Show voice recording overlay and timer
                     document.getElementById('voiceRecordOverlay').classList.add('active');
                     document.getElementById('recordAudioBtn').classList.add('recording');
                     
@@ -1568,16 +1573,16 @@
                         document.getElementById('recordTimer').textContent = `${mins}:${secs}`;
                     }, 1000);
 
-                    showToast('🎙️ Voice Note Record ho raha hai...');
+                    showToast('🎙️ Recording started...');
                 })
                 .catch(err => {
-                    showToast('❌ Microphone permission denied: ' + err.message, 'error');
+                    showToast('❌ Mic permission denied!', 'error');
                 });
         }
 
         function stopAndSendAudioRecording() {
             if (!mediaRecorder || !isRecording) return;
-            showToast('⏳ Encrypting Voice Note...', 'info');
+            showToast('⏳ Sending Voice Note...', 'info');
 
             clearInterval(recordInterval);
             
@@ -1602,7 +1607,6 @@
                 };
                 reader.readAsDataURL(audioBlob);
                 
-                // Cleanup
                 isRecording = false;
                 document.getElementById('voiceRecordOverlay').classList.remove('active');
                 document.getElementById('recordAudioBtn').classList.remove('recording');
@@ -1686,6 +1690,7 @@
                 span.textContent = emoji;
                 span.onclick = () => {
                     document.getElementById('msgInput').value += emoji;
+                    handleInputText();
                     document.getElementById('msgInput').focus();
                 };
                 grid.appendChild(span);
@@ -1731,7 +1736,7 @@
             }
             if (!query) return;
 
-            gifsGrid.innerHTML = '<div style="grid-column: 1/3; text-align:center; padding: 20px; font-size:12px; color:var(--text-dim);">⏳ Loading GIFs...</div>';
+            gifsGrid.innerHTML = '<div style="grid-column: 1/3; text-align:center; padding: 20px; font-size:12px; color:var(--text-dim);">⏳ Loading...</div>';
 
             const apiKey = 'dc6zaTOxFJmzC';
             const endpoint = query === 'trending' 
@@ -1743,7 +1748,7 @@
                 .then(data => {
                     gifsGrid.innerHTML = '';
                     if (!data.data || data.data.length === 0) {
-                        gifsGrid.innerHTML = '<div style="grid-column:1/3; text-align:center; padding:20px; font-size:12px; color:var(--text-dim);">❌ No GIFs found</div>';
+                        gifsGrid.innerHTML = '<div style="grid-column:1/3; text-align:center; padding:20px; font-size:12px; color:var(--text-dim);">❌ No GIFs</div>';
                         return;
                     }
                     data.data.forEach(item => {
@@ -1756,10 +1761,11 @@
                     });
                 })
                 .catch(() => {
-                    gifsGrid.innerHTML = '<div style="grid-column:1/3; text-align:center; padding:20px; font-size:12px; color:var(--red);">❌ Giphy API load failed</div>';
+                    gifsGrid.innerHTML = '<div style="grid-column:1/3; text-align:center; padding:20px; font-size:12px; color:var(--red);">Failed</div>';
                 });
         }
 
+        // Send dynamic GIF
         function sendGif(url) {
             if (!roomRef) return;
             roomRef.push({
