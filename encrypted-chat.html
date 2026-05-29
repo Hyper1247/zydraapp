@@ -1025,6 +1025,753 @@
             max-height: 85vh;
             border-radius: 8px;
         }
+
+        /* ============ DASHBOARD SPECIFIC CSS ============ */
+        .dashboard-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: rgba(12, 12, 29, 0.4);
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .dashboard-sidebar {
+            width: 300px;
+            background: rgba(12, 12, 29, 0.95);
+            border-right: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .sidebar-profile {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.01);
+        }
+
+        .sidebar-profile .avatar-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: var(--bg-hover);
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .sidebar-profile .avatar-img:hover {
+            transform: scale(1.05);
+        }
+
+        .sidebar-profile-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sidebar-profile-info .name {
+            font-weight: 700;
+            font-size: 14.5px;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar-profile-info .status {
+            font-size: 10px;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 2px;
+        }
+
+        .sidebar-profile-info .status::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+        }
+
+        .sidebar-action-btn {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-action-btn:hover {
+            color: var(--accent-light);
+            background: var(--bg-hover);
+        }
+
+        /* Group Header Section in Sidebar */
+        .sidebar-groups-header {
+            padding: 16px 14px 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-dim);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-groups-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .sidebar-groups-actions button {
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text);
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sidebar-groups-actions button:hover {
+            background: var(--accent);
+            border-color: var(--accent-light);
+        }
+
+        /* Scrolling groups list */
+        .sidebar-groups-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 6px 16px 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sidebar-groups-list::-webkit-scrollbar { width: 4px; }
+        .sidebar-groups-list::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
+
+        .group-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .group-item:hover {
+            background: rgba(255,255,255,0.03);
+            border-color: rgba(255,255,255,0.01);
+        }
+
+        .group-item.active {
+            background: rgba(124, 58, 237, 0.15);
+            border-color: rgba(124, 58, 237, 0.25);
+        }
+
+        .group-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .group-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .group-info-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .group-info-desc {
+            font-size: 10.5px;
+            color: var(--text-dim);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 1px;
+        }
+
+        /* Right panel content area */
+        .dashboard-main {
+            flex: 1;
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            background: rgba(6, 6, 15, 0.95);
+        }
+
+        .welcome-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .welcome-card {
+            background: rgba(18, 18, 42, 0.65);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow), 0 0 80px rgba(124,58,237,0.04);
+            animation: screenIn 0.5s ease-out;
+        }
+
+        .welcome-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            margin: 0 auto 16px auto;
+            display: block;
+            background: var(--bg-hover);
+        }
+
+        .welcome-card h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text), var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-card p {
+            font-size: 13.5px;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .welcome-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .welcome-action-card {
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .welcome-action-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            background: var(--bg-hover);
+            box-shadow: 0 6px 20px rgba(124,58,237,0.15);
+        }
+
+        .welcome-action-card .icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .welcome-action-card h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .welcome-action-card p {
+            font-size: 10px;
+            color: var(--text-dim);
+            margin-bottom: 0;
+            line-height: 1.3;
+        }
+
+        /* Modals and forms overlay styling */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: screenIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-card {
+            background: rgba(18, 18, 42, 0.95);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 18px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--red);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .modal-card h2 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .modal-card p.subtitle {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 18px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-footer button {
+            width: auto;
+            min-width: 90px;
+        }
+
+        /* Avatar Selection Grid */
+        .avatar-selection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        .avatar-selection-grid::-webkit-scrollbar { width: 4px; }
+        .avatar-selection-grid::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
+
+        .avatar-select-item {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            overflow: hidden;
+            background: var(--bg-input);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .avatar-select-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-light);
+        }
+
+        .avatar-select-item.selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+            background: var(--bg-hover);
+        }
+
+        .avatar-select-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Custom group info drawer */
+        .members-drawer {
+            width: 220px;
+            background: rgba(12, 12, 29, 0.95);
+            border-left: 1px solid var(--border-subtle);
+            display: none;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 8;
+            animation: slideLeft 0.25s ease-out;
+        }
+
+        .members-drawer.active {
+            display: flex;
+        }
+
+        @keyframes slideLeft {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .drawer-header {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .members-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .member-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.01);
+            transition: background 0.2s;
+        }
+
+        .member-item:hover {
+            background: rgba(255,255,255,0.04);
+        }
+
+        .member-item img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .member-status-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-muted);
+        }
+
+        .member-status-indicator.online {
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+        }
+
+        /* Group Info Card inside drawer */
+        .group-detail-panel {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(0,0,0,0.15);
+        }
+
+        .group-detail-panel h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .group-detail-panel p {
+            font-size: 10.5px;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        .group-detail-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-light);
+            background: var(--bg-input);
+            padding: 4px 6px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .group-detail-id:hover {
+            border-color: var(--accent);
+            background: var(--bg-hover);
+            color: var(--text);
+        }
+
+        /* Layout changes for main screens */
+        .chat-container {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            background: rgba(12, 12, 29, 0.7);
+            backdrop-filter: blur(20px);
+        }
+
+        .chat-container.active {
+            display: flex;
+        }
+
+        /* ============ AI IMAGE GENERATOR MODAL ============ */
+        .ai-img-modal .modal-card {
+            max-width: 460px;
+        }
+
+        .ai-img-modal .modal-card h2 {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent2-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-style-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .ai-style-option {
+            padding: 10px 6px;
+            text-align: center;
+            background: var(--bg-input);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-dim);
+        }
+
+        .ai-style-option:hover {
+            background: var(--bg-hover);
+            border-color: rgba(124, 58, 237, 0.3);
+            color: var(--text);
+        }
+
+        .ai-style-option.selected {
+            border-color: var(--accent);
+            background: rgba(124, 58, 237, 0.15);
+            color: var(--accent-light);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .ai-style-option .style-emoji {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .ai-size-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .ai-size-option {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            background: var(--bg-input);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--text-dim);
+        }
+
+        .ai-size-option:hover {
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        .ai-size-option.selected {
+            border-color: var(--accent2);
+            background: rgba(236, 72, 153, 0.12);
+            color: var(--accent2-light);
+        }
+
+        .ai-preview-area {
+            background: var(--bg-input);
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ai-preview-area img {
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .ai-preview-placeholder {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            padding: 20px;
+        }
+
+        .ai-preview-placeholder .big-icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 8px;
+            opacity: 0.4;
+        }
+
+        .ai-loading-spinner {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dim);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .ai-loading-spinner.active {
+            display: flex;
+        }
+
+        .ai-spinner-ring {
+            width: 36px;
+            height: 36px;
+            border: 3px solid var(--border-subtle);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spinRing 0.8s linear infinite;
+        }
+
+        @keyframes spinRing {
+            to { transform: rotate(360deg); }
+        }
+
+        .ai-negative-prompt {
+            margin-bottom: 16px;
+        }
+
+        .ai-negative-prompt textarea {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text);
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            resize: vertical;
+            min-height: 36px;
+            max-height: 80px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .ai-negative-prompt textarea:focus {
+            border-color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -1042,152 +1789,349 @@
         <img id="modalImg" src="" alt="Zoomed view">
     </div>
 
-    <!-- ==================== SCREEN 1: ROOM SETUP ==================== -->
-    <div class="screen active" id="setupScreen">
-        <div class="card">
+    <!-- ==================== SCREEN 1: PROFILE SETUP ==================== -->
+    <div class="screen active" id="profileSetupScreen">
+        <div class="card" style="max-width: 440px;">
             <div class="card-header">
-                <span class="logo">🔐</span>
-                <h1>CipherChat</h1>
-                <p>Private & secure messaging room</p>
+                <span class="logo">👤</span>
+                <h1>Setup Your Profile</h1>
+                <p>Choose your display name and premium avatar</p>
             </div>
 
             <div class="field">
-                <label>Aapka Naam</label>
-                <input type="text" id="userName" placeholder="Apna naam likho..." maxlength="20">
+                <label>Aapka Nickname</label>
+                <input type="text" id="userName" placeholder="Apna nickname likho..." maxlength="15">
             </div>
 
             <div class="field">
-                <label>Encryption Password</label>
-                <input type="text" id="encPassword" placeholder="Shared secret password...">
-                <div style="font-size: 10px; color: var(--text-dim); margin-top: 5px;">⚠️ Is password ke bina messages decrypt nahi honge</div>
-            </div>
-
-            <button class="btn btn-primary" onclick="createRoom()">
-                ✨ Naya Room Banao
-            </button>
-
-            <div class="divider">YA</div>
-
-            <div class="row">
-                <div class="field">
-                    <label>Room Code</label>
-                    <input type="text" id="roomCodeInput" placeholder="ABC123" maxlength="6" style="text-transform: uppercase; letter-spacing: 3px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center;">
+                <label>Choose Avatar</label>
+                <div class="avatar-selection-grid" id="avatarSetupGrid">
+                    <!-- Rendered by JS -->
                 </div>
-                <button class="btn btn-pink" onclick="joinRoom()" style="margin-bottom: 16px; min-width: 90px; padding: 12px 10px;">
-                    🔗 Join
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== SCREEN 2: ROOM CREATED ==================== -->
-    <div class="screen" id="roomCreatedScreen">
-        <div class="card">
-            <div class="card-header">
-                <span class="logo">🎉</span>
-                <h1>Room Ready!</h1>
-                <p>Apne dost ko yeh code aur password send karein</p>
             </div>
 
-            <div class="room-code-display">
-                <div class="code-label">Room Code</div>
-                <div class="code" id="roomCodeDisplay">------</div>
-            </div>
-
-            <button class="btn btn-primary" onclick="copyRoomCode()" style="margin-bottom: 12px;">
-                📋 Code Copy Karein
-            </button>
-
-            <button class="btn btn-pink" onclick="enterChat()">
-                💬 Chat Shuru Karein →
+            <button class="btn btn-primary" onclick="saveProfileFromSetup()">
+                ✨ Enter Dashboard →
             </button>
         </div>
     </div>
 
-    <!-- ==================== SCREEN 3: CHAT WINDOW ==================== -->
-    <div class="screen chat-screen" id="chatScreen">
-        <div class="chat-container">
-            <!-- Header -->
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <h2 id="chatRoomTitle">Room: ------</h2>
-                    <div class="sub" id="chatSubtitle">🔒 AES-256 Encrypted</div>
+    <!-- ==================== SCREEN 2: MAIN DASHBOARD ==================== -->
+    <div class="dashboard-container" id="dashboardScreen" style="display: none;">
+        <!-- Left Sidebar -->
+        <div class="dashboard-sidebar">
+            <!-- Sidebar Profile -->
+            <div class="sidebar-profile">
+                <img src="" alt="Avatar" class="avatar-img" id="sidebarAvatar" onclick="openEditProfileModal()">
+                <div class="sidebar-profile-info">
+                    <div class="name" id="sidebarName">Nickname</div>
+                    <div class="status">Online</div>
                 </div>
-                <div class="header-actions">
-                    <div class="badge badge-green">Live</div>
-                    <button class="icon-btn" onclick="copyRoomCode()" title="Copy Room Code">📋</button>
-                    <button class="icon-btn" onclick="leaveRoom()" title="Leave Room">🚪</button>
+                <button class="sidebar-action-btn" onclick="openEditProfileModal()" title="Edit Profile">⚙️</button>
+            </div>
+
+            <!-- Sidebar Groups Header -->
+            <div class="sidebar-groups-header">
+                <span>Groups Joined</span>
+                <div class="sidebar-groups-actions">
+                    <button onclick="openCreateGroupModal()" title="Naya Group Banao">➕</button>
+                    <button onclick="openJoinGroupModal()" title="Existing Group Join Karo">🔗</button>
                 </div>
             </div>
 
-            <!-- Messages Box -->
-            <div class="messages-area" id="messagesArea"></div>
+            <!-- Sidebar Groups List -->
+            <div class="sidebar-groups-list" id="sidebarGroupsList">
+                <!-- Rendered dynamically by JS -->
+            </div>
+        </div>
 
-            <!-- Media Drawer (Emojis / Stickers / GIFs) -->
-            <div class="media-drawer" id="mediaDrawer">
-                <div class="drawer-tabs">
-                    <div class="drawer-tab active" onclick="switchDrawerTab('emojis')">😀 Emojis</div>
-                    <div class="drawer-tab" onclick="switchDrawerTab('stickers')">✨ Stickers</div>
-                    <div class="drawer-tab" onclick="switchDrawerTab('gifs')">🎬 GIFs</div>
-                </div>
-
-                <!-- Emojis tab -->
-                <div class="drawer-content" id="drawerTab-emojis">
-                    <div class="emojis-grid" id="emojisGrid"></div>
-                </div>
-
-                <!-- Stickers tab -->
-                <div class="drawer-content" id="drawerTab-stickers" style="display:none;">
-                    <div class="stickers-grid" id="stickersGrid"></div>
-                </div>
-
-                <!-- GIFs tab -->
-                <div class="drawer-content" id="drawerTab-gifs" style="display:none;">
-                    <div class="gif-search-box">
-                        <input type="text" id="gifSearchInput" placeholder="GIF search karein..." onkeydown="handleGifSearchKey(event)">
-                        <button onclick="searchGifs()">🔍</button>
+        <!-- Main Dashboard Pane -->
+        <div class="dashboard-main">
+            <!-- Welcome Landing Screen (if no group is active) -->
+            <div class="welcome-panel" id="welcomePanel">
+                <div class="welcome-card">
+                    <img src="" alt="Welcome" class="welcome-avatar" id="welcomeAvatar">
+                    <h2 id="welcomeHeading">Welcome, Guest! 👋</h2>
+                    <p>CipherChat is an end-to-end encrypted private space. Join an existing group with a Group ID and shared secret password, or create a new group and invite your friends!</p>
+                    
+                    <div class="welcome-actions">
+                        <div class="welcome-action-card" onclick="openCreateGroupModal()">
+                            <span class="icon">✨</span>
+                            <h3>Naya Group Banao</h3>
+                            <p>Create private space & generate ID</p>
+                        </div>
+                        <div class="welcome-action-card" onclick="openJoinGroupModal()">
+                            <span class="icon">🔗</span>
+                            <h3>Group Join Karo</h3>
+                            <p>Enter 6-digit ID & decrypt key</p>
+                        </div>
                     </div>
-                    <div class="gifs-grid" id="gifsGrid"></div>
                 </div>
             </div>
 
-            <!-- Upload File Preview Bar -->
-            <div class="upload-preview-bar" id="uploadPreviewBar">
-                <div class="preview-file-details">
-                    <span id="previewFileIcon">📎</span>
-                    <span id="previewFileName" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis;">filename.ext</span>
-                    <span id="previewFileSize" style="color:var(--text-dim); font-size:10px;">(0 KB)</span>
+            <!-- Chat window (embedded within dashboard) -->
+            <div class="chat-container" id="chatScreenContainer">
+                <!-- Header -->
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <h2 id="chatRoomTitle">Group: ------</h2>
+                        <div class="sub" id="chatSubtitle">🔒 AES-256 Encrypted</div>
+                    </div>
+                    <div class="header-actions">
+                        <div class="badge badge-green">Live</div>
+                        <button class="icon-btn" onclick="toggleMembersDrawer()" title="View Members & Details">👥</button>
+                        <button class="icon-btn" onclick="copyGroupId()" title="Copy Group ID">📋</button>
+                        <button class="icon-btn" onclick="leaveGroupHandler()" title="Leave Group" style="color: var(--red);">🚪</button>
+                    </div>
                 </div>
-                <button class="preview-cancel-btn" onclick="clearSelectedFile()">✕</button>
+
+                <!-- Messages Box -->
+                <div class="messages-area" id="messagesArea"></div>
+
+                <!-- Media Drawer (Emojis / Stickers / GIFs) -->
+                <div class="media-drawer" id="mediaDrawer">
+                    <div class="drawer-tabs">
+                        <div class="drawer-tab active" onclick="switchDrawerTab('emojis')">😀 Emojis</div>
+                        <div class="drawer-tab" onclick="switchDrawerTab('stickers')">✨ Stickers</div>
+                        <div class="drawer-tab" onclick="switchDrawerTab('gifs')">🎬 GIFs</div>
+                    </div>
+
+                    <!-- Emojis tab -->
+                    <div class="drawer-content" id="drawerTab-emojis">
+                        <div class="emojis-grid" id="emojisGrid"></div>
+                    </div>
+
+                    <!-- Stickers tab -->
+                    <div class="drawer-content" id="drawerTab-stickers" style="display:none;">
+                        <div class="stickers-grid" id="stickersGrid"></div>
+                    </div>
+
+                    <!-- GIFs tab -->
+                    <div class="drawer-content" id="drawerTab-gifs" style="display:none;">
+                        <div class="gif-search-box">
+                            <input type="text" id="gifSearchInput" placeholder="GIF search karein..." onkeydown="handleGifSearchKey(event)">
+                            <button onclick="searchGifs()">🔍</button>
+                        </div>
+                        <div class="gifs-grid" id="gifsGrid"></div>
+                    </div>
+                </div>
+
+                <!-- Upload File Preview Bar -->
+                <div class="upload-preview-bar" id="uploadPreviewBar">
+                    <div class="preview-file-details">
+                        <span id="previewFileIcon">📎</span>
+                        <span id="previewFileName" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis;">filename.ext</span>
+                        <span id="previewFileSize" style="color:var(--text-dim); font-size:10px;">(0 KB)</span>
+                    </div>
+                    <button class="preview-cancel-btn" onclick="clearSelectedFile()">✕</button>
+                </div>
+
+                <!-- Input Box -->
+                <div class="chat-input-area">
+                    <!-- Hidden inputs for file attachment -->
+                    <input type="file" id="fileAttachInput" style="display:none;" onchange="handleFileSelected(event)">
+
+                    <button class="input-actions-btn" onclick="triggerFileSelect()" title="Attach File (Max 5MB)">📎</button>
+                    <button class="input-actions-btn" onclick="toggleMediaDrawer()" title="Emoji, Stickers & GIFs">😀</button>
+
+                    <!-- Voice Note Recording Overlay -->
+                    <div class="voice-record-overlay" id="voiceRecordOverlay">
+                        <div class="voice-record-timer">
+                            <div class="record-dot"></div>
+                            <span id="recordTimer">00:00</span>
+                        </div>
+                        <div class="voice-record-actions">
+                            <button class="record-action-btn cancel" onclick="cancelAudioRecording()">✕ Cancel</button>
+                            <button class="record-action-btn send" onclick="stopAndSendAudioRecording()">📤 Send</button>
+                        </div>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <input type="text" id="msgInput" placeholder="Message..." onkeydown="handleChatKey(event)" oninput="handleInputText()" autocomplete="off">
+                    </div>
+
+                    <!-- Microphone & Send buttons switch dynamically -->
+                    <button class="input-actions-btn" id="recordAudioBtn" onclick="toggleAudioRecording()" title="Record Audio">🎙️</button>
+                    <button class="send-btn" id="sendTextBtn" onclick="sendMessage()" style="display: none;" title="Send Message">📤</button>
+                </div>
             </div>
 
-            <!-- Input Box -->
-            <div class="chat-input-area">
-                <!-- Hidden inputs for file attachment -->
-                <input type="file" id="fileAttachInput" style="display:none;" onchange="handleFileSelected(event)">
-
-                <button class="input-actions-btn" onclick="triggerFileSelect()" title="Attach File (Max 5MB)">📎</button>
-                <button class="input-actions-btn" onclick="toggleMediaDrawer()" title="Emoji, Stickers & GIFs">😀</button>
-
-                <!-- Voice Note Recording Overlay -->
-                <div class="voice-record-overlay" id="voiceRecordOverlay">
-                    <div class="voice-record-timer">
-                        <div class="record-dot"></div>
-                        <span id="recordTimer">00:00</span>
-                    </div>
-                    <div class="voice-record-actions">
-                        <button class="record-action-btn cancel" onclick="cancelAudioRecording()">✕ Cancel</button>
-                        <button class="record-action-btn send" onclick="stopAndSendAudioRecording()">📤 Send</button>
+            <!-- Group Members Panel / Drawer -->
+            <div class="members-drawer" id="membersDrawer">
+                <div class="group-detail-panel">
+                    <h4 id="detailGroupName">Group Details</h4>
+                    <p id="detailGroupDesc" style="margin-top: 4px;">Description of group...</p>
+                    <div class="group-detail-id" id="detailGroupId" onclick="copyGroupId()" title="Copy Group ID">
+                        <span>Group ID: ------</span> 📋
                     </div>
                 </div>
-
-                <div class="input-wrapper">
-                    <input type="text" id="msgInput" placeholder="Message..." onkeydown="handleChatKey(event)" oninput="handleInputText()" autocomplete="off">
+                <div class="drawer-header">
+                    <span>Online Members</span>
+                    <span id="onlineMembersCount" class="badge badge-green" style="padding: 2px 6px;">0</span>
                 </div>
+                <div class="members-list" id="membersList">
+                    <!-- Rendered dynamically by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Microphone & Send buttons switch dynamically -->
-                <button class="input-actions-btn" id="recordAudioBtn" onclick="toggleAudioRecording()" title="Record Audio">🎙️</button>
-                <button class="send-btn" id="sendTextBtn" onclick="sendMessage()" style="display: none;" title="Send Message">📤</button>
+    <!-- ==================== DIALOG MODALS ==================== -->
+    
+    <!-- Modal: Create Group -->
+    <div class="modal-overlay" id="createGroupModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeCreateGroupModal()">✕</button>
+            <h2>Create New Group</h2>
+            <p class="subtitle">Bina password ke aapke messages secure nahi ho payenge</p>
+            
+            <div class="field">
+                <label>Group Name</label>
+                <input type="text" id="newGroupName" placeholder="E.g. Squad Goals, Cryptographers" maxlength="25">
+            </div>
+
+            <div class="field">
+                <label>Group Description</label>
+                <input type="text" id="newGroupDesc" placeholder="Brief details about the group..." maxlength="50">
+            </div>
+
+            <div class="field">
+                <label>Group Encryption Password (Shared Secret)</label>
+                <input type="text" id="newGroupPassword" placeholder="Keep it strong & share with your crew...">
+                <div style="font-size: 9px; color: var(--text-dim); margin-top: 4px;">⚠️ Is password ke bina files aur messages decrypt nahi honge!</div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeCreateGroupModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitCreateGroup()">✨ Banao</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Join Group -->
+    <div class="modal-overlay" id="joinGroupModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeJoinGroupModal()">✕</button>
+            <h2>Join Group</h2>
+            <p class="subtitle">Enter group details shared by your friend</p>
+            
+            <div class="field">
+                <label>Group ID (6-Digit Code)</label>
+                <input type="text" id="joinGroupId" placeholder="E.g. XYZ789" style="text-transform: uppercase; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center; letter-spacing: 3px;" maxlength="6">
+            </div>
+
+            <div class="field">
+                <label>Group Encryption Password</label>
+                <input type="text" id="joinGroupPassword" placeholder="Enter shared encryption key...">
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeJoinGroupModal()">Cancel</button>
+                <button class="btn btn-pink" onclick="submitJoinGroup()">🔗 Join</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Edit Profile -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeEditProfileModal()">✕</button>
+            <h2>Edit Profile</h2>
+            <p class="subtitle">Apna display name aur avatar change karein</p>
+            
+            <div class="field">
+                <label>Aapka Nickname</label>
+                <input type="text" id="editUserName" placeholder="Apna name likho..." maxlength="15">
+            </div>
+
+            <div class="field">
+                <label>Choose Avatar</label>
+                <div class="avatar-selection-grid" id="avatarEditGrid">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeEditProfileModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitEditProfile()">💾 Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: AI Image Generator -->
+    <div class="modal-overlay ai-img-modal" id="aiImageModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeAiImageModal()">✕</button>
+            <h2>🎨 AI Image Generator</h2>
+            <p class="subtitle">Prompt likho, style choose karo, aur image generate karke chat mein bhejo!</p>
+
+            <div class="field">
+                <label>Image Prompt</label>
+                <input type="text" id="aiPromptInput" placeholder="E.g. A dragon flying over mountains at sunset..." maxlength="500">
+            </div>
+
+            <div class="field">
+                <label>Art Style</label>
+                <div class="ai-style-grid" id="aiStyleGrid">
+                    <div class="ai-style-option selected" data-style="painted anime" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">🎨</span>Painted Anime
+                    </div>
+                    <div class="ai-style-option" data-style="realistic photo" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">📷</span>Realistic
+                    </div>
+                    <div class="ai-style-option" data-style="fantasy art, magical" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">🧙</span>Fantasy Art
+                    </div>
+                    <div class="ai-style-option" data-style="cyberpunk, neon, futuristic" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">🌃</span>Cyberpunk
+                    </div>
+                    <div class="ai-style-option" data-style="3d render, octane" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">🧊</span>3D Render
+                    </div>
+                    <div class="ai-style-option" data-style="oil painting, classical" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">🖼️</span>Oil Painting
+                    </div>
+                    <div class="ai-style-option" data-style="pixel art, retro" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">👾</span>Pixel Art
+                    </div>
+                    <div class="ai-style-option" data-style="watercolor, soft" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">💧</span>Watercolor
+                    </div>
+                    <div class="ai-style-option" data-style="comic book, bold lines" onclick="selectAiStyle(this)">
+                        <span class="style-emoji">💥</span>Comic
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Image Size</label>
+                <div class="ai-size-row" id="aiSizeRow">
+                    <div class="ai-size-option selected" data-w="512" data-h="512" onclick="selectAiSize(this)">Square<br>512×512</div>
+                    <div class="ai-size-option" data-w="768" data-h="512" onclick="selectAiSize(this)">Landscape<br>768×512</div>
+                    <div class="ai-size-option" data-w="512" data-h="768" onclick="selectAiSize(this)">Portrait<br>512×768</div>
+                </div>
+            </div>
+
+            <div class="ai-negative-prompt">
+                <label style="display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-dim); margin-bottom:6px;">Negative Prompt (Optional)</label>
+                <textarea id="aiNegativePrompt" placeholder="E.g. blurry, low quality, watermark..."></textarea>
+            </div>
+
+            <div class="ai-preview-area" id="aiPreviewArea">
+                <div class="ai-preview-placeholder" id="aiPlaceholder">
+                    <span class="big-icon">✨</span>
+                    Yahan preview dikhega<br>Generate dabao!
+                </div>
+                <div class="ai-loading-spinner" id="aiSpinner">
+                    <div class="ai-spinner-ring"></div>
+                    Image generate ho rahi hai...
+                </div>
+                <img id="aiPreviewImg" src="" alt="AI Generated" style="display:none;">
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="generateAiImage()" id="aiGenerateBtn">🎨 Generate</button>
+                <button class="btn btn-primary" onclick="sendAiImage()" id="aiSendBtn" disabled style="opacity:0.5;">📤 Chat Mein Bhejo</button>
             </div>
         </div>
     </div>
@@ -1210,24 +2154,32 @@
             appId: "1:540446787313:web:40658b154499f84905cb50"
         };
 
-        // Initialize Firebase
         firebase.initializeApp(defaultFirebaseConfig);
         const db = firebase.database();
 
         // ==================== STATE VARIABLES ====================
         let roomRef = null;
+        let presenceRef = null;
+        let membersRef = null;
+        let presenceInterval = null;
         let myName = '';
-        let roomCode = '';
+        let myAvatar = '';
         let encPassword = '';
+        let activeGroupCode = null;
+        let joinedGroups = []; // [{code, name, desc, password}]
         const myId = crypto.randomUUID();
         let selectedFile = null;
-        
+
         // Media Recorder State (Voice Notes)
         let mediaRecorder = null;
         let audioChunks = [];
         let isRecording = false;
         let recordInterval = null;
         let recordSeconds = 0;
+
+        // Avatar options (DiceBear)
+        const avatarSeeds = ['Felix','Aneka','Sophia','Max','Luna','Leo','Mia','Oscar','Aria','Zara','Kai','Nova','Rex','Nyx','Coco','Juno'];
+        const avatarUrls = avatarSeeds.map(seed => `https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`);
 
         // Emojis list
         const emojis = ["😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","😗","😙","😚","😋","😛","😝","😜","🤪","🤨","🧐","🤓","😎","🤩","🥳","😏","😒","😞","😔","😟","😕","🙁","☹️","😣","😖","😫","😩","🥺","😢","😭","😤","😠","😡","🤬","🤯","😳","🥵","🥶","😱","😨","😰","😥","😓","🤗","🤔","🤭","🤫","🤥","😶","😐","😑","😬","🙄","😯","😦","😧","😮","😲","🥱","😴","🤤","😪","😵","🤐","🥴","🤢","🤮","🤧","😷","🤒","🤕","🤑","🤠","😈","👿","👹","👺","🤡","💩","👻","💀","☠️","👽","👾","🤖","🎃","😺","😸","😹","😻","😼","😽","🙀","😿","😾","👋","🤚","🖐️","✋","🖖","👌","🤏","✌️","🤞","🤟","🤘","🤙","👈","👉","👆","🖕","👇","☝️","👍","👎","✊","👊","🤛","🤜","👏","🙌","👐","🤲","🤝","🙏","✍️","💅","🤳","💪","🦾","🧠","🧡","❤️","💖","✨","🔥","🎉"];
@@ -1248,11 +2200,19 @@
             "https://api.dicebear.com/7.x/fun-emoji/svg?seed=sticker12",
         ];
 
-        // ==================== SCREEN SWITCHING ====================
-        function showScreen(id) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
+        // ==================== INITIALIZATION ====================
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedProfile = JSON.parse(localStorage.getItem('cipherProfile') || 'null');
+            if (savedProfile && savedProfile.name) {
+                myName = savedProfile.name;
+                myAvatar = savedProfile.avatar || avatarUrls[0];
+                joinedGroups = JSON.parse(localStorage.getItem('cipherGroups') || '[]');
+                showDashboard();
+            } else {
+                renderAvatarGrid('avatarSetupGrid');
+                document.getElementById('profileSetupScreen').classList.add('active');
+            }
+        });
 
         // ==================== TOAST ====================
         let toastTimer = null;
@@ -1264,7 +2224,7 @@
             toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
         }
 
-        // ==================== ROOM LOGIC ====================
+        // ==================== ROOM CODE GENERATOR ====================
         function generateRoomCode() {
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
             let code = '';
@@ -1272,65 +2232,6 @@
                 code += chars[Math.floor(Math.random() * chars.length)];
             }
             return code;
-        }
-
-        function validateSetup() {
-            myName = document.getElementById('userName').value.trim();
-            encPassword = document.getElementById('encPassword').value.trim();
-
-            if (!myName) {
-                showToast('Apna naam likho!', 'error');
-                return false;
-            }
-            if (!encPassword) {
-                showToast('Encryption password dalo!', 'error');
-                return false;
-            }
-            return true;
-        }
-
-        function createRoom() {
-            if (!validateSetup()) return;
-            roomCode = generateRoomCode();
-            document.getElementById('roomCodeDisplay').textContent = roomCode;
-            showScreen('roomCreatedScreen');
-        }
-
-        function joinRoom() {
-            if (!validateSetup()) return;
-            const code = document.getElementById('roomCodeInput').value.trim().toUpperCase();
-            if (!code || code.length < 4) {
-                showToast('Room code empty ya galat hai!', 'error');
-                return;
-            }
-            roomCode = code;
-            startChat();
-        }
-
-        function copyRoomCode() {
-            navigator.clipboard.writeText(roomCode).then(() => {
-                showToast('📋 Room Code copy ho gaya: ' + roomCode);
-            });
-        }
-
-        function enterChat() {
-            startChat();
-        }
-
-        function leaveRoom() {
-            if (roomRef) {
-                roomRef.push({
-                    s: '🔒 System',
-                    t: encrypt(myName + ' ne chat left kar di'),
-                    ts: firebase.database.ServerValue.TIMESTAMP,
-                    uid: 'system',
-                    type: 'system'
-                });
-                roomRef.off();
-            }
-            roomRef = null;
-            document.getElementById('messagesArea').innerHTML = '';
-            showScreen('setupScreen');
         }
 
         // ==================== ENCRYPTION ====================
@@ -1349,63 +2250,445 @@
             }
         }
 
-        // ==================== CHAT ACTIONS ====================
-        function startChat() {
-            document.getElementById('chatRoomTitle').textContent = 'Room: ' + roomCode;
+        // ==================== AVATAR SYSTEM ====================
+        function renderAvatarGrid(containerId) {
+            const grid = document.getElementById(containerId);
+            grid.innerHTML = '';
+            avatarUrls.forEach((url, i) => {
+                const item = document.createElement('div');
+                item.className = 'avatar-select-item' + (myAvatar === url ? ' selected' : '');
+                item.innerHTML = `<img src="${url}" alt="Avatar ${i + 1}">`;
+                item.onclick = () => {
+                    grid.querySelectorAll('.avatar-select-item').forEach(el => el.classList.remove('selected'));
+                    item.classList.add('selected');
+                    myAvatar = url;
+                };
+                grid.appendChild(item);
+            });
+            // Auto-select first if none selected
+            if (!myAvatar && grid.children.length > 0) {
+                myAvatar = avatarUrls[0];
+                grid.children[0].classList.add('selected');
+            }
+        }
+
+        // ==================== PROFILE SETUP ====================
+        function saveProfileFromSetup() {
+            const nameInput = document.getElementById('userName');
+            const name = nameInput.value.trim();
+            if (!name) {
+                showToast('Apna naam likho bhai! 😅', 'error');
+                return;
+            }
+            if (!myAvatar) {
+                showToast('Avatar select karo! 🎨', 'error');
+                return;
+            }
+            myName = name;
+            localStorage.setItem('cipherProfile', JSON.stringify({ name: myName, avatar: myAvatar }));
+            joinedGroups = JSON.parse(localStorage.getItem('cipherGroups') || '[]');
+            showDashboard();
+            showToast('✅ Welcome, ' + myName + '! Profile saved.');
+        }
+
+        // ==================== DASHBOARD ====================
+        function showDashboard() {
+            // Hide profile setup
+            document.getElementById('profileSetupScreen').classList.remove('active');
+            document.getElementById('profileSetupScreen').style.display = 'none';
+            // Show dashboard
+            document.getElementById('dashboardScreen').style.display = 'flex';
+            // Update sidebar profile
+            document.getElementById('sidebarAvatar').src = myAvatar;
+            document.getElementById('sidebarName').textContent = myName;
+            document.getElementById('welcomeAvatar').src = myAvatar;
+            document.getElementById('welcomeHeading').textContent = `Welcome, ${myName}! 👋`;
+            // Render sidebar groups
+            renderSidebarGroups();
+            // Show welcome panel by default
+            showWelcomePanel();
+        }
+
+        function showWelcomePanel() {
+            // Cleanup active chat
+            cleanupActiveChat();
+            // Show welcome, hide chat
+            document.getElementById('welcomePanel').style.display = 'flex';
+            document.getElementById('chatScreenContainer').classList.remove('active');
+            document.getElementById('membersDrawer').classList.remove('active');
+            activeGroupCode = null;
+            renderSidebarGroups();
+        }
+
+        function cleanupActiveChat() {
+            if (roomRef) { roomRef.off(); roomRef = null; }
+            if (membersRef) { membersRef.off(); membersRef = null; }
+            if (presenceRef) {
+                presenceRef.onDisconnect().cancel();
+                presenceRef = null;
+            }
+            if (presenceInterval) { clearInterval(presenceInterval); presenceInterval = null; }
+        }
+
+        // ==================== SIDEBAR GROUPS ====================
+        function renderSidebarGroups() {
+            const list = document.getElementById('sidebarGroupsList');
+            list.innerHTML = '';
+
+            if (joinedGroups.length === 0) {
+                list.innerHTML = `
+                    <div style="text-align:center; padding:40px 16px; color:var(--text-muted); font-size:12px; line-height:1.6;">
+                        <div style="font-size:36px; margin-bottom:10px; opacity:0.5;">💬</div>
+                        Koi group nahi hai abhi.<br>
+                        <span style="color:var(--accent-light);">Naya banao</span> ya <span style="color:var(--accent2-light);">join karo!</span>
+                    </div>`;
+                return;
+            }
+
+            joinedGroups.forEach(g => {
+                const item = document.createElement('div');
+                item.className = 'group-item' + (activeGroupCode === g.code ? ' active' : '');
+                item.innerHTML = `
+                    <div class="group-badge">${g.name.charAt(0).toUpperCase()}</div>
+                    <div class="group-info">
+                        <div class="group-info-name">${escapeHtml(g.name)}</div>
+                        <div class="group-info-desc">${escapeHtml(g.desc || g.code)}</div>
+                    </div>
+                `;
+                item.onclick = () => switchToGroup(g.code);
+                list.appendChild(item);
+            });
+        }
+
+        function saveGroups() {
+            localStorage.setItem('cipherGroups', JSON.stringify(joinedGroups));
+        }
+
+        // ==================== CREATE GROUP ====================
+        function openCreateGroupModal() {
+            document.getElementById('createGroupModal').classList.add('active');
+            document.getElementById('newGroupName').value = '';
+            document.getElementById('newGroupDesc').value = '';
+            document.getElementById('newGroupPassword').value = '';
+            setTimeout(() => document.getElementById('newGroupName').focus(), 100);
+        }
+
+        function closeCreateGroupModal() {
+            document.getElementById('createGroupModal').classList.remove('active');
+        }
+
+        function submitCreateGroup() {
+            const name = document.getElementById('newGroupName').value.trim();
+            const desc = document.getElementById('newGroupDesc').value.trim();
+            const password = document.getElementById('newGroupPassword').value.trim();
+
+            if (!name) { showToast('Group name dalo! 📝', 'error'); return; }
+            if (!password) { showToast('Encryption password zaroori hai! 🔑', 'error'); return; }
+
+            const code = generateRoomCode();
+
+            // Save group metadata to Firebase
+            db.ref('groups/' + code + '/info').set({
+                name: name,
+                desc: desc,
+                createdBy: myName,
+                createdAt: firebase.database.ServerValue.TIMESTAMP
+            });
+
+            // Add to local joined groups
+            const group = { code, name, desc, password };
+            joinedGroups.push(group);
+            saveGroups();
+
+            closeCreateGroupModal();
+            renderSidebarGroups();
+            switchToGroup(code);
+            showToast('✨ Group "' + name + '" ban gaya! Code: ' + code);
+        }
+
+        // ==================== JOIN GROUP ====================
+        function openJoinGroupModal() {
+            document.getElementById('joinGroupModal').classList.add('active');
+            document.getElementById('joinGroupId').value = '';
+            document.getElementById('joinGroupPassword').value = '';
+            setTimeout(() => document.getElementById('joinGroupId').focus(), 100);
+        }
+
+        function closeJoinGroupModal() {
+            document.getElementById('joinGroupModal').classList.remove('active');
+        }
+
+        function submitJoinGroup() {
+            const code = document.getElementById('joinGroupId').value.trim().toUpperCase();
+            const password = document.getElementById('joinGroupPassword').value.trim();
+
+            if (!code || code.length < 4) {
+                showToast('Group ID galat hai! Minimum 4 characters.', 'error');
+                return;
+            }
+            if (!password) {
+                showToast('Encryption password dalo! 🔑', 'error');
+                return;
+            }
+
+            // Check if already joined
+            if (joinedGroups.find(g => g.code === code)) {
+                showToast('Yeh group pehle se join hai! 😉', 'error');
+                closeJoinGroupModal();
+                switchToGroup(code);
+                return;
+            }
+
+            // Check if group exists in Firebase
+            showToast('⏳ Group dhundh rahe hai...', 'success');
+            db.ref('groups/' + code + '/info').once('value').then(snap => {
+                const info = snap.val();
+                if (!info) {
+                    showToast('❌ Group nahi mila! Code check karo.', 'error');
+                    return;
+                }
+
+                const group = {
+                    code,
+                    name: info.name || 'Unknown Group',
+                    desc: info.desc || '',
+                    password
+                };
+                joinedGroups.push(group);
+                saveGroups();
+
+                closeJoinGroupModal();
+                renderSidebarGroups();
+                switchToGroup(code);
+                showToast('🔗 Group "' + group.name + '" join ho gaya!');
+            }).catch(err => {
+                showToast('❌ Error: ' + err.message, 'error');
+            });
+        }
+
+        // ==================== SWITCH TO GROUP (MAIN CHAT LOADER) ====================
+        function switchToGroup(code) {
+            const group = joinedGroups.find(g => g.code === code);
+            if (!group) return;
+
+            // If already viewing this group, do nothing
+            if (activeGroupCode === code && roomRef) return;
+
+            // Cleanup previous chat listeners
+            cleanupActiveChat();
+
+            activeGroupCode = code;
+            encPassword = group.password;
+
+            // Update Chat UI
+            document.getElementById('welcomePanel').style.display = 'none';
+            document.getElementById('chatScreenContainer').classList.add('active');
+            document.getElementById('chatRoomTitle').textContent = group.name;
+            document.getElementById('chatSubtitle').textContent = `🔒 AES-256 · Code: ${code}`;
+            document.getElementById('detailGroupName').textContent = group.name;
+            document.getElementById('detailGroupDesc').textContent = group.desc || 'No description available';
+            document.getElementById('detailGroupId').querySelector('span').textContent = 'Group ID: ' + code;
             document.getElementById('messagesArea').innerHTML = '';
-            showScreen('chatScreen');
-            
+
+            // Update sidebar active state
+            renderSidebarGroups();
+
+            // Build media grids
             buildEmojisGrid();
             buildStickersGrid();
             searchGifs('trending');
 
-            roomRef = db.ref('rooms/' + roomCode + '/messages');
+            // Start Firebase listeners
+            roomRef = db.ref('groups/' + code + '/messages');
 
-            // Send system join alert
+            // Setup presence
+            setupPresence(code);
+
+            // Send join system message
             roomRef.push({
                 s: '🔒 System',
-                t: encrypt(myName + ' chat mein join ho gaya! 🎉'),
+                t: encrypt(myName + ' chat mein aa gaya! 🎉'),
                 ts: firebase.database.ServerValue.TIMESTAMP,
                 uid: 'system',
                 type: 'system'
             });
 
             // Listen to messages
-            roomRef.limitToLast(50).on('child_added', (snapshot) => {
+            roomRef.limitToLast(80).on('child_added', (snapshot) => {
                 const data = snapshot.val();
                 if (!data) return;
 
                 const decryptedText = decrypt(data.t);
                 if (decryptedText === null) {
-                    addSystemMessage('🔒 Ek secure message decrypt nahi ho paya (wrong password?)');
+                    addSystemMessage('🔒 Ek message decrypt nahi ho paya (wrong password?)');
                     return;
                 }
 
                 if (data.type === 'system') {
                     addSystemMessage(decryptedText);
                 } else if (data.type === 'sticker') {
-                    const isMine = data.uid === myId;
-                    addStickerMessage(data.s, decryptedText, isMine, data.ts);
+                    addStickerMessage(data.s, decryptedText, data.uid === myId, data.ts);
                 } else if (data.type === 'gif') {
-                    const isMine = data.uid === myId;
-                    addGifMessage(data.s, decryptedText, isMine, data.ts);
+                    addGifMessage(data.s, decryptedText, data.uid === myId, data.ts);
                 } else if (data.type === 'file') {
-                    const isMine = data.uid === myId;
                     const decName = decrypt(data.fileName);
                     const decData = decrypt(data.fileData);
-                    addFileMessage(data.s, decName, decData, data.fileType, isMine, data.ts);
+                    addFileMessage(data.s, decName, decData, data.fileType, data.uid === myId, data.ts);
                 } else if (data.type === 'voice') {
-                    const isMine = data.uid === myId;
                     const decAudio = decrypt(data.audioData);
-                    addVoiceMessage(data.s, decAudio, isMine, data.ts);
+                    addVoiceMessage(data.s, decAudio, data.uid === myId, data.ts);
+                } else if (data.type === 'ai-image') {
+                    const decPrompt = data.prompt ? decrypt(data.prompt) : 'AI Image';
+                    addAiImageMessage(data.s, decryptedText, decPrompt, data.uid === myId, data.ts);
                 } else {
-                    const isMine = data.uid === myId;
-                    addChatMessage(data.s, decryptedText, isMine, data.ts);
+                    addChatMessage(data.s, decryptedText, data.uid === myId, data.ts);
                 }
             });
         }
 
-        // Switch between microphone and send icon depending on input text length
+        // ==================== FIREBASE PRESENCE SYSTEM ====================
+        function setupPresence(code) {
+            presenceRef = db.ref('groups/' + code + '/members/' + myId);
+
+            const updatePresence = () => {
+                if (presenceRef) {
+                    presenceRef.set({
+                        name: myName,
+                        avatar: myAvatar,
+                        lastSeen: firebase.database.ServerValue.TIMESTAMP
+                    });
+                }
+            };
+
+            updatePresence();
+            presenceInterval = setInterval(updatePresence, 30000);
+
+            // Auto-remove on disconnect
+            presenceRef.onDisconnect().remove();
+
+            // Listen for all members
+            membersRef = db.ref('groups/' + code + '/members');
+            membersRef.on('value', (snap) => {
+                const members = snap.val() || {};
+                renderMembersList(members);
+            });
+        }
+
+        function renderMembersList(members) {
+            const list = document.getElementById('membersList');
+            const countEl = document.getElementById('onlineMembersCount');
+            list.innerHTML = '';
+
+            const now = Date.now();
+            const entries = Object.entries(members);
+            let onlineCount = 0;
+
+            entries.forEach(([id, m]) => {
+                const isOnline = (now - (m.lastSeen || 0)) < 120000; // 2 min threshold
+                if (isOnline) onlineCount++;
+
+                const item = document.createElement('div');
+                item.className = 'member-item';
+                item.innerHTML = `
+                    <img src="${m.avatar || avatarUrls[0]}" alt="${escapeHtml(m.name || 'User')}">
+                    <span class="member-name">${escapeHtml(m.name || 'Unknown')}${id === myId ? ' (You)' : ''}</span>
+                    <div class="member-status-indicator ${isOnline ? 'online' : ''}"></div>
+                `;
+                list.appendChild(item);
+            });
+
+            countEl.textContent = onlineCount;
+        }
+
+        // ==================== MEMBERS DRAWER ====================
+        function toggleMembersDrawer() {
+            document.getElementById('membersDrawer').classList.toggle('active');
+        }
+
+        // ==================== LEAVE GROUP ====================
+        function leaveGroupHandler() {
+            if (!activeGroupCode) return;
+
+            const group = joinedGroups.find(g => g.code === activeGroupCode);
+            const groupName = group ? group.name : activeGroupCode;
+
+            // Send leave system message
+            if (roomRef) {
+                roomRef.push({
+                    s: '🔒 System',
+                    t: encrypt(myName + ' ne group chhod diya 👋'),
+                    ts: firebase.database.ServerValue.TIMESTAMP,
+                    uid: 'system',
+                    type: 'system'
+                });
+            }
+
+            // Remove presence from Firebase
+            if (presenceRef) {
+                presenceRef.remove();
+            }
+
+            // Cleanup listeners
+            cleanupActiveChat();
+
+            // Remove from local list
+            joinedGroups = joinedGroups.filter(g => g.code !== activeGroupCode);
+            saveGroups();
+
+            activeGroupCode = null;
+
+            showToast('👋 Group "' + groupName + '" chhod diya!');
+            showWelcomePanel();
+        }
+
+        // ==================== COPY GROUP ID ====================
+        function copyGroupId() {
+            if (!activeGroupCode) return;
+            navigator.clipboard.writeText(activeGroupCode).then(() => {
+                showToast('📋 Group ID copy ho gaya: ' + activeGroupCode);
+            }).catch(() => {
+                // Fallback for non-HTTPS
+                const textarea = document.createElement('textarea');
+                textarea.value = activeGroupCode;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('📋 Group ID copy ho gaya: ' + activeGroupCode);
+            });
+        }
+
+        // ==================== EDIT PROFILE ====================
+        function openEditProfileModal() {
+            document.getElementById('editProfileModal').classList.add('active');
+            document.getElementById('editUserName').value = myName;
+            renderAvatarGrid('avatarEditGrid');
+        }
+
+        function closeEditProfileModal() {
+            document.getElementById('editProfileModal').classList.remove('active');
+        }
+
+        function submitEditProfile() {
+            const name = document.getElementById('editUserName').value.trim();
+            if (!name) {
+                showToast('Name dalo bhai! 😅', 'error');
+                return;
+            }
+            myName = name;
+            localStorage.setItem('cipherProfile', JSON.stringify({ name: myName, avatar: myAvatar }));
+            // Update sidebar UI
+            document.getElementById('sidebarAvatar').src = myAvatar;
+            document.getElementById('sidebarName').textContent = myName;
+            // Update Firebase presence if in a group
+            if (presenceRef) {
+                presenceRef.update({ name: myName, avatar: myAvatar });
+            }
+            closeEditProfileModal();
+            showToast('✅ Profile updated!');
+        }
+
+        // ==================== CHAT INPUT HANDLING ====================
         function handleInputText() {
             const text = document.getElementById('msgInput').value.trim();
             const recordBtn = document.getElementById('recordAudioBtn');
@@ -1439,7 +2722,7 @@
             });
 
             input.value = '';
-            handleInputText(); // Reset buttons display
+            handleInputText();
             input.focus();
             closeMediaDrawer();
         }
@@ -1471,13 +2754,12 @@
 
             const sizeKB = Math.round(file.size / 1024);
             const sizeText = sizeKB > 1000 ? (sizeKB / 1024).toFixed(1) + ' MB' : sizeKB + ' KB';
-            
+
             document.getElementById('previewFileName').textContent = file.name;
             document.getElementById('previewFileSize').textContent = `(${sizeText})`;
             document.getElementById('previewFileIcon').textContent = getFileEmoji(file.name);
             document.getElementById('uploadPreviewBar').classList.add('active');
-            
-            // Auto trigger send button view
+
             handleInputText();
         }
 
@@ -1501,12 +2783,11 @@
 
         function uploadSelectedFile() {
             if (!selectedFile || !roomRef) return;
-            showToast('⏳ Encrypting aur Uploading...', 'info');
+            showToast('⏳ Encrypting aur Uploading...');
 
             const reader = new FileReader();
             reader.onload = function(e) {
                 const base64Data = e.target.result;
-
                 const encData = encrypt(base64Data);
                 const encName = encrypt(selectedFile.name);
 
@@ -1523,7 +2804,7 @@
                     showToast('✅ File sent securely!');
                     clearSelectedFile();
                 }).catch((err) => {
-                    showToast('❌ Send fail ho gaya: ' + err.message, 'error');
+                    showToast('❌ Send fail: ' + err.message, 'error');
                 });
             };
             reader.readAsDataURL(selectedFile);
@@ -1548,7 +2829,7 @@
                 .then(stream => {
                     audioChunks = [];
                     mediaRecorder = new MediaRecorder(stream);
-                    
+
                     mediaRecorder.ondataavailable = event => {
                         audioChunks.push(event.data);
                     };
@@ -1559,10 +2840,10 @@
 
                     mediaRecorder.start();
                     isRecording = true;
-                    
+
                     document.getElementById('voiceRecordOverlay').classList.add('active');
                     document.getElementById('recordAudioBtn').classList.add('recording');
-                    
+
                     recordSeconds = 0;
                     document.getElementById('recordTimer').textContent = '00:00';
                     clearInterval(recordInterval);
@@ -1582,13 +2863,13 @@
 
         function stopAndSendAudioRecording() {
             if (!mediaRecorder || !isRecording) return;
-            showToast('⏳ Sending Voice Note...', 'info');
+            showToast('⏳ Sending Voice Note...');
 
             clearInterval(recordInterval);
-            
+
             mediaRecorder.onstop = () => {
                 const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-                
+
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const base64Audio = e.target.result;
@@ -1602,11 +2883,11 @@
                         uid: myId,
                         type: 'voice'
                     }).then(() => {
-                        showToast('✅ Voice Note sent securely!');
+                        showToast('✅ Voice Note sent!');
                     });
                 };
                 reader.readAsDataURL(audioBlob);
-                
+
                 isRecording = false;
                 document.getElementById('voiceRecordOverlay').classList.remove('active');
                 document.getElementById('recordAudioBtn').classList.remove('recording');
@@ -1617,7 +2898,7 @@
 
         function cancelAudioRecording() {
             if (!mediaRecorder || !isRecording) return;
-            
+
             clearInterval(recordInterval);
             mediaRecorder.onstop = () => {
                 isRecording = false;
@@ -1641,7 +2922,7 @@
                 audio.addEventListener('timeupdate', () => {
                     const pct = (audio.currentTime / audio.duration) * 100;
                     fill.style.width = pct + '%';
-                    
+
                     const min = Math.floor(audio.currentTime / 60).toString().padStart(2, '0');
                     const sec = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
                     timeDisplay.textContent = `${min}:${sec}`;
@@ -1663,7 +2944,7 @@
             }
         }
 
-        // ==================== MEDIA DRAWER LOGIC ====================
+        // ==================== MEDIA DRAWER (EMOJIS / STICKERS / GIFS) ====================
         function toggleMediaDrawer() {
             const drawer = document.getElementById('mediaDrawer');
             drawer.classList.toggle('active');
@@ -1676,7 +2957,7 @@
         function switchDrawerTab(tabId) {
             document.querySelectorAll('.drawer-tab').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.drawer-content').forEach(c => c.style.display = 'none');
-            
+
             event.target.classList.add('active');
             document.getElementById('drawerTab-' + tabId).style.display = 'block';
         }
@@ -1739,7 +3020,7 @@
             gifsGrid.innerHTML = '<div style="grid-column: 1/3; text-align:center; padding: 20px; font-size:12px; color:var(--text-dim);">⏳ Loading...</div>';
 
             const apiKey = 'dc6zaTOxFJmzC';
-            const endpoint = query === 'trending' 
+            const endpoint = query === 'trending'
                 ? `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=20`
                 : `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${encodeURIComponent(query)}&limit=20`;
 
@@ -1765,7 +3046,6 @@
                 });
         }
 
-        // Send dynamic GIF
         function sendGif(url) {
             if (!roomRef) return;
             roomRef.push({
@@ -1902,41 +3182,69 @@
 
             const msgEl = document.createElement('div');
             msgEl.innerHTML = `<div class="sender">${escapeHtml(sender)}</div>`;
-            
+
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            
+
             const player = document.createElement('div');
             player.className = 'audio-player-bubble';
-            
+
             const playBtn = document.createElement('button');
             playBtn.className = 'audio-player-btn';
             playBtn.textContent = '▶️';
             playBtn.onclick = () => toggleAudioPlay(playBtn, audioBase64);
-            
+
             const progress = document.createElement('div');
             progress.className = 'audio-progress-bar';
-            
+
             const progressFill = document.createElement('div');
             progressFill.className = 'audio-progress-fill';
-            
+
             const duration = document.createElement('span');
             duration.className = 'audio-duration';
             duration.textContent = '00:00';
-            
+
             progress.appendChild(progressFill);
             player.appendChild(playBtn);
             player.appendChild(progress);
             player.appendChild(duration);
             bubble.appendChild(player);
             msgEl.appendChild(bubble);
-            
+
             const timeEl = document.createElement('div');
             timeEl.className = 'time';
             timeEl.textContent = time;
             msgEl.appendChild(timeEl);
 
             div.appendChild(msgEl);
+            area.appendChild(div);
+            area.scrollTop = area.scrollHeight;
+        }
+
+        function addAiImageMessage(sender, imageUrl, prompt, isMine, timestamp) {
+            const area = document.getElementById('messagesArea');
+            const div = document.createElement('div');
+            div.className = 'msg ' + (isMine ? 'sent' : 'received');
+
+            const time = timestamp ? new Date(timestamp).toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit'
+            }) : '';
+
+            div.innerHTML = `
+                <div class="sender">${escapeHtml(sender)}</div>
+                <div class="bubble">
+                    <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.7); margin-bottom:6px; display:flex; align-items:center; gap:4px;">
+                        🎨✨ <span>AI Generated</span>
+                    </div>
+                    <img src="${escapeHtml(imageUrl)}" class="shared-img" onclick="zoomImage(this)" alt="AI Image" style="max-height:250px; border-radius:10px; cursor:zoom-in;">
+                    <div style="font-size:10.5px; color:rgba(255,255,255,0.5); margin-top:6px; font-style:italic;">
+                        "${escapeHtml(prompt)}"
+                    </div>
+                </div>
+                <div class="time">${time}</div>
+            `;
+
             area.appendChild(div);
             area.scrollTop = area.scrollHeight;
         }
@@ -1967,6 +3275,142 @@
         function closeImageModal() {
             document.getElementById('imageModal').style.display = 'none';
         }
+
+        // ==================== @imageai DETECTION ====================
+        // Monitor chat input for @imageai trigger
+        (function() {
+            const chatInput = document.getElementById('msgInput');
+            if (!chatInput) return;
+
+            chatInput.addEventListener('input', function() {
+                const val = this.value.trim().toLowerCase();
+                if (val === '@imageai') {
+                    this.value = '';
+                    handleInputText();
+                    openAiImageModal();
+                }
+            });
+        })();
+
+        // ==================== AI IMAGE GENERATOR ====================
+        let aiSelectedStyle = 'painted anime';
+        let aiSelectedWidth = 512;
+        let aiSelectedHeight = 512;
+        let aiGeneratedImageUrl = null;
+
+        function openAiImageModal() {
+            document.getElementById('aiImageModal').classList.add('active');
+            document.getElementById('aiPromptInput').value = '';
+            document.getElementById('aiNegativePrompt').value = '';
+            document.getElementById('aiPreviewImg').style.display = 'none';
+            document.getElementById('aiPreviewImg').src = '';
+            document.getElementById('aiPlaceholder').style.display = 'block';
+            document.getElementById('aiSpinner').classList.remove('active');
+            document.getElementById('aiSendBtn').disabled = true;
+            document.getElementById('aiSendBtn').style.opacity = '0.5';
+            document.getElementById('aiGenerateBtn').disabled = false;
+            document.getElementById('aiGenerateBtn').textContent = '🎨 Generate';
+            aiGeneratedImageUrl = null;
+            setTimeout(() => document.getElementById('aiPromptInput').focus(), 100);
+        }
+
+        function closeAiImageModal() {
+            document.getElementById('aiImageModal').classList.remove('active');
+        }
+
+        function selectAiStyle(el) {
+            document.querySelectorAll('#aiStyleGrid .ai-style-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            aiSelectedStyle = el.getAttribute('data-style');
+        }
+
+        function selectAiSize(el) {
+            document.querySelectorAll('#aiSizeRow .ai-size-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            aiSelectedWidth = parseInt(el.getAttribute('data-w'));
+            aiSelectedHeight = parseInt(el.getAttribute('data-h'));
+        }
+
+        function generateAiImage() {
+            const prompt = document.getElementById('aiPromptInput').value.trim();
+            if (!prompt) {
+                showToast('Prompt likho pehle! ✏️', 'error');
+                return;
+            }
+
+            const negative = document.getElementById('aiNegativePrompt').value.trim();
+
+            // Build the full prompt with style
+            let fullPrompt = prompt + ', ' + aiSelectedStyle + ', high quality, detailed, masterpiece';
+            if (negative) {
+                fullPrompt += ', NOT ' + negative;
+            }
+
+            // Show loading state
+            document.getElementById('aiPlaceholder').style.display = 'none';
+            document.getElementById('aiPreviewImg').style.display = 'none';
+            document.getElementById('aiSpinner').classList.add('active');
+            document.getElementById('aiGenerateBtn').disabled = true;
+            document.getElementById('aiGenerateBtn').textContent = '⏳ Generating...';
+            document.getElementById('aiSendBtn').disabled = true;
+            document.getElementById('aiSendBtn').style.opacity = '0.5';
+
+            // Build Pollinations.ai URL
+            const seed = Math.floor(Math.random() * 999999);
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=${aiSelectedWidth}&height=${aiSelectedHeight}&seed=${seed}&nologo=true`;
+
+            // Load image
+            const img = document.getElementById('aiPreviewImg');
+            img.onload = function() {
+                document.getElementById('aiSpinner').classList.remove('active');
+                img.style.display = 'block';
+                document.getElementById('aiGenerateBtn').disabled = false;
+                document.getElementById('aiGenerateBtn').textContent = '🔄 Regenerate';
+                document.getElementById('aiSendBtn').disabled = false;
+                document.getElementById('aiSendBtn').style.opacity = '1';
+                aiGeneratedImageUrl = imageUrl;
+                showToast('✅ Image generate ho gayi!');
+            };
+            img.onerror = function() {
+                document.getElementById('aiSpinner').classList.remove('active');
+                document.getElementById('aiPlaceholder').style.display = 'block';
+                document.getElementById('aiGenerateBtn').disabled = false;
+                document.getElementById('aiGenerateBtn').textContent = '🎨 Generate';
+                showToast('❌ Image generate nahi ho payi. Try again!', 'error');
+            };
+            img.src = imageUrl;
+        }
+
+        function sendAiImage() {
+            if (!aiGeneratedImageUrl || !roomRef) {
+                showToast('Pehle image generate karo!', 'error');
+                return;
+            }
+
+            const prompt = document.getElementById('aiPromptInput').value.trim();
+
+            // Send as a special AI image message
+            roomRef.push({
+                s: myName,
+                t: encrypt(aiGeneratedImageUrl),
+                ts: firebase.database.ServerValue.TIMESTAMP,
+                uid: myId,
+                type: 'ai-image',
+                prompt: encrypt(prompt || 'AI Generated Image')
+            }).then(() => {
+                showToast('🎨 AI Image chat mein send ho gayi!');
+                closeAiImageModal();
+            }).catch(err => {
+                showToast('❌ Send fail: ' + err.message, 'error');
+            });
+        }
+
+        // ==================== CLEANUP ON PAGE UNLOAD ====================
+        window.addEventListener('beforeunload', () => {
+            if (presenceRef) {
+                presenceRef.remove();
+            }
+        });
     </script>
 </body>
 </html>
