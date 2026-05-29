@@ -1346,9 +1346,11 @@
             backdrop-filter: blur(8px);
             z-index: 100;
             display: none;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             padding: 16px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .modal-overlay.active {
@@ -1357,6 +1359,7 @@
         }
 
         .modal-card {
+            margin: auto 0;
             background: rgba(18, 18, 42, 0.95);
             backdrop-filter: blur(40px);
             border: 1px solid var(--border);
@@ -1771,6 +1774,151 @@
 
         .ai-negative-prompt textarea:focus {
             border-color: var(--accent);
+        }
+
+        /* ============ MOBILE RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            /* Dashboard: sidebar full width, toggle */
+            .dashboard-container {
+                flex-direction: column;
+            }
+
+            .dashboard-sidebar {
+                width: 100%;
+                max-height: 100vh;
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .dashboard-sidebar.hidden-mobile {
+                display: none;
+            }
+
+            .dashboard-main {
+                flex: 1;
+            }
+
+            .members-drawer {
+                position: fixed;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 260px;
+                z-index: 50;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+            }
+
+            /* Modals: full screen on mobile */
+            .modal-overlay {
+                padding: 8px;
+                align-items: flex-start;
+            }
+
+            .modal-card {
+                max-width: 100% !important;
+                border-radius: 16px;
+                padding: 16px;
+                margin: 8px 0;
+                max-height: none;
+            }
+
+            /* AI Image Modal compact mobile */
+            .ai-img-modal .modal-card {
+                max-width: 100% !important;
+            }
+
+            .ai-style-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+
+            .ai-style-option {
+                padding: 8px 4px;
+                font-size: 10px;
+            }
+
+            .ai-style-option .style-emoji {
+                font-size: 18px;
+                margin-bottom: 2px;
+            }
+
+            .ai-size-row {
+                gap: 6px;
+            }
+
+            .ai-size-option {
+                padding: 6px;
+                font-size: 9.5px;
+            }
+
+            .ai-preview-area {
+                min-height: 120px;
+            }
+
+            .ai-preview-area img {
+                max-height: 200px;
+            }
+
+            .ai-negative-prompt textarea {
+                min-height: 30px;
+                font-size: 11px;
+            }
+
+            /* Welcome card */
+            .welcome-card {
+                padding: 24px 16px;
+            }
+
+            .welcome-actions {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            /* Chat input area */
+            .chat-input-area {
+                padding: 8px;
+            }
+
+            .chat-header {
+                padding: 8px 12px;
+            }
+
+            /* Profile setup screen */
+            .profile-setup .container {
+                padding: 16px;
+            }
+
+            .avatar-selection-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-height: 120px;
+                gap: 8px;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .modal-footer button {
+                width: 100%;
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .ai-style-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+            }
+
+            .ai-style-option {
+                padding: 6px 3px;
+                font-size: 9px;
+            }
+
+            .ai-style-option .style-emoji {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -3312,6 +3460,14 @@
             document.getElementById('aiGenerateBtn').textContent = '🎨 Generate';
             aiGeneratedImageUrl = null;
             setTimeout(() => document.getElementById('aiPromptInput').focus(), 100);
+
+            // Enter key to generate
+            document.getElementById('aiPromptInput').onkeydown = function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    generateAiImage();
+                }
+            };
         }
 
         function closeAiImageModal() {
