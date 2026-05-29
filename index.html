@@ -3513,7 +3513,7 @@
 
             // Build Pollinations.ai URL
             const seed = Math.floor(Math.random() * 999999);
-            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=${aiSelectedWidth}&height=${aiSelectedHeight}&seed=${seed}&nologo=true`;
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=${aiSelectedWidth}&height=${aiSelectedHeight}&seed=${seed}&nologo=true&safe=false`;
 
             // Load image
             const img = document.getElementById('aiPreviewImg');
